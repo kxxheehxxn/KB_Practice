@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        /*
+        querySelectorAll()
+        주어진 CSS 선택자에 일치하는 전체 요소를 선택하는 메서드
+        */
+        const h1s = document.querySelectorAll('h1');
+        console.log(h1s);
+        for (let i = 0; i < h1s.length; i++) {
+          let $h1 = h1s[i];
+          $h1.style.color = 'orange';
+          $h1.style.background = 'red';
+          $h1.innerHTML = 'From JavaScript';
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="header">Header</h1>
+    <h1>Header</h1>
+    <h1>Header</h1>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+      <ul v-for="item in items" :key="item.id">
+        <li>{{ item.title }}</li>
+      </ul>
+      <hr />
+      <template v-for="item in items" :key="item.id">
+        <div>{{ item.title }}</div>
+        <div>{{ item.description }}</div>
+        <hr />
+      </template>
+      <form>
+        <template v-for="field in formFields" :key="field.id">
+          <label :for="field.id">{{ field.label }}</label>
+          <input
+            :type="field.type"
+            :id="field.id"
+            :name="field.id"
+            :required="field.required"
+            :placeholder="field.label"
+          />
+          <span v-if="field.helpText">{{ field.helpText }}</span>
+          <hr />
+        </template>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const message = ref('Hello Vue!');
+          const items = ref([
+            { id: 1, title: '제목1', description: '설명1' },
+            { id: 2, title: '제목2', description: '설명2' },
+            { id: 3, title: '제목3', description: '설명3' },
+          ]);
+          const formFields = ref([
+            {
+              id: 'name',
+              label: '이름',
+              type: 'text',
+              required: true,
+            },
+            {
+              id: 'email',
+              label: '이메일',
+              type: 'email',
+              required: true,
+            },
+            {
+              id: 'password',
+              label: '비밀번호',
+              type: 'password',
+              required: true,
+              helpText: '8자 이상 입력해주세요',
+            },
+          ]);
+
+          return {
+            message,
+            items,
+            formFields, // 추가
+          };
+        },
+      });
+
+      app.mount('#app');
+    </script>
+  </body>
+</html>

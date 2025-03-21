@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_selector_id</title>
+    <style>
+      /*
+      ID 선택자(#)
+      - HTML 요소의 id 속성을 선택
+      - # 기호를 사용하여 선택한다.  
+      */
+      #header {
+        width: 800px;
+        background-color: red;
+      }
+      #wrap {
+        width: 800px;
+        overflow: hidden;
+      }
+      #aside {
+        width: 200px;
+        float: left;
+        background-color: blue;
+      }
+      #content {
+        width: 600px;
+        float: right;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>#header tag</h1>
+    </div>
+    <div id="wrap">
+      <div id="aside">
+        <h1>#aside tag</h1>
+      </div>
+      <div id="content">
+        <h1>#content tag</h1>
+      </div>
+    </div>
+  </body>
+</html>

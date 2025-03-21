@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_advanced</title>
+  </head>
+  <body>
+    <h1>02_advanced</h1>
+    <fieldset>
+      <legend>Register</legend>
+      <table>
+        <tr>
+          <th>User ID</th>
+          <td>
+            <input id="UserID" type="text" name="UserID" />
+          </td>
+        </tr>
+        <tr>
+          <th>Password</th>
+          <td>
+            <input type="password" name="Password" id="Password" />
+          </td>
+        </tr>
+        <tr>
+          <th>Check Password</th>
+          <td>
+            <input type="password" name="Checkpassword" id="Checkpassword" />
+          </td>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <td>
+            <input type="text" name="name" id="name" />
+          </td>
+        </tr>
+        <tr>
+          <th>Gender</th>
+          <td>
+            <input type="radio" name="Male" id="Male" />
+            <label for="Male">Male</label>
+            <input type="radio" name="Female" id="Female" />
+            <label for="Female">Female</label>
+          </td>
+        </tr>
+        <tr>
+          <th>Hobby</th>
+          <td>
+            <input type="checkbox" name="Soccer" id="Soccer" />
+            <label for="Soccer">Soccer</label>
+            <input type="checkbox" name="Baseball" id="Baseball" />
+            <label for="Baseball">Baseball</label>
+            <input type="checkbox" name="Volleyball" id="Volleyball" />
+            <label for="Volleyball">Volleyball</label>
+            <input type="checkbox" name="Basketball" id="Basketball" />
+            <label for="Basketball">Basketball</label>
+          </td>
+        </tr>
+        <tr>
+          <th>E-mail</th>
+          <td>
+            <input type="email" name="E-mail" id="E-mail" />
+          </td>
+        </tr>
+        <tr>
+          <th>Role</th>
+          <th>
+            <select>
+              <option value="">ADMIN</option>
+              <option value="">Admin</option>
+              <option value="">Customer</option>
+            </select>
+          </th>
+        </tr>
+      </table>
+      <input type="submit" value="SUBMIT" />
+      <input type="reset" value="RESET" />
+    </fieldset>
+  </body>
+</html>

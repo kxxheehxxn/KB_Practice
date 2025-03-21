@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        /*
+        querySelector()
+        주어진 CSS 선택자에 일치하는 첫 번째 요소를 선택하는 메서드
+        */
+        const $h1 = document.querySelector('h1');
+        $h1.style.color = 'orange';
+        $h1.style.background = 'red';
+        $h1.innerHTML = 'From JavaScript';
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="header">Head</h1>
+    <h1>Header</h1>
+    <h1>Header</h1>
+  </body>
+</html>

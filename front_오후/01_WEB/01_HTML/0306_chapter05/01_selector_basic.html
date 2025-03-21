@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_selector_basic</title>
+    <style>
+      h2 {
+        color: red;
+        background-color: orange;
+      }
+      div {
+        background-color: green !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>01_selector_basic</h1>
+    <!-- 
+    Cascading Style Shhet(CSS)
+    - HTML 문서의 스타일을 정의하는 시트언어
+
+    1. 외부 스타일 시트
+    - 별도의 css를 생성하여 HTML 문서와 연결
+    - 유지보수하기 쉬움
+
+    2. 내부 스타일 시트
+    - HTML 문서의 head 태그 내에 style 태그를 사용하여 CSS 정의
+
+    3. 인라인 스타일
+    - HTML 요소의 속성을 이용해 직접 스타일을 적용
+    -->
+    <!-- 
+    선택자 우선순위
+    1. !important - 가장 높은 우선순위
+    2. 인라인 스타일
+    3. 아이디 선택자
+    4. 클래스 선택자
+    5. 태그 선택자
+    6. 전체 선택자
+
+
+    => 동일한 우선순위일 경우에는 나중에 선언된 스타일이 적용된다.
+     -->
+    <div>
+      <h2 style="color: white">CSS3 선택자 기본</h2>
+      <h3>우선순위 테스트</h3>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>v-bind 디렉티브</h1>
+      <article hidden>
+        <h2>1. basic binding</h2>
+        <img :src="imgurl" alt="image" />
+      </article>
+      <article hidden>
+        <a :href="url">move to naver</a>
+      </article>
+      <article hidden>
+        <h2>Binding class and style</h2>
+        <div :class="[activeClass, errorClass]">contents</div>
+        <div :class="[isActive ? activeClass : '', errorClass]">Contents2</div>
+      </article>
+      <article>
+        <h2>Inline style binding</h2>
+        <div :style="{ color: color1 }">Contents4</div>
+      </article>
+      <article>
+        <h2>5. form</h2>
+        <input
+          :type="inputType"
+          :placeholder="placeholderText"
+          :required="isRequired"
+        />
+      </article>
+      <article>
+        <h2>select</h2>
+        <select v-model="selected">
+          <option
+            v-for="(option, i) in options"
+            :value="option.value"
+            :key="option.id"
+          >
+            {{ option.text }}
+          </option>
+        </select>
+      </article>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+      const { createApp } = Vue;
+
+      createApp({
+        name: 'App',
+        data() {
+          return {
+            message: 'Hello Vue!',
+            imgurl: 'https://picsum.photos/100/100',
+            url: 'https://naver.com',
+            activeClass: 'active',
+            errorClass: 'text',
+            isActive: true,
+            color1: 'red',
+            inputType: 'text',
+            placeholderText: '이름을 입력하세요',
+            isRequired: true,
+            selected: 'text1',
+            options: [
+              { id: 1, value: 'text1', text: '텍스트1' },
+              { id: 2, value: 'text2', text: '텍스트2' },
+              { id: 3, value: 'text3', text: '텍스트3' },
+            ],
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

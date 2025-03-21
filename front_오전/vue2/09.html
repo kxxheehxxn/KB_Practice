@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>v-if</h1>
+      <div v-if="step === 1">
+        <h3>1step</h3>
+        <button @click="step = 2">next</button>
+      </div>
+      <div v-else-if="step===2">
+        <h3>2step</h3>
+        <button @click="step = 1">previous</button>
+        <button @click="step = 3">next</button>
+      </div>
+      <div v-else="step === 3">
+        <h3>3step</h3>
+        <button @click="step = 2">previous</button>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const message = ref('Hello Vue!');
+          const step = ref(1);
+
+          return {
+            message,
+            step,
+          };
+        },
+      });
+
+      const vm = app.mount('#app');
+    </script>
+  </body>
+</html>

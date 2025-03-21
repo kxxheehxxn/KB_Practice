@@ -1,0 +1,14 @@
+console.log(today.getFullYear());
+console.log(today.getHours());
+console.log(today.getMinutes());
+console.log(today.getMonth());
+console.log(today.getSeconds());
+console.log(today.getTime());
+console.log(today.getTimezoneOffset());
+console.log(today.getUTCDate());
+console.log(today.getUTCDay());
+console.log(today.getUTCFullYear());
+console.log(today.getUTCHours());
+console.log(today.getUTCMinutes());
+console.log(today.getUTCMonth());
+console.log(today.getUTCSeconds());

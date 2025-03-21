@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let arr = [10, 20, 30, 40, 50];
+      console.log(arr.length);
+      for (let i = 0; i < arr.length; i++) {
+        alert(arr[i]);
+      }
+      // for( let i = 0; i < arr.length; i++){
+      //alert(arr[i]);
+      //}
+
+      //for...of 반복문
+      // - 배열의 요소를 직접 참조하여 반복할 수 있는 반복문
+      //이터러블
+      for (let value of arr) {
+        //in은 인덱스를 반환, of는 값을 반환
+        alert(value);
+      }
+
+      //for...in 반복문
+      //객체의 속성을 순회 (배엘서에서는 인덱스를 순회)
+      for (let i in arr) {
+        alert(arr[i]);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

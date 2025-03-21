@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>for-object</h1>
+      <ul>
+        <li v-for="(value, key,i) in user">{{i}}-{{key}}- {{value}}</li>
+        <li v-for="(list, i) in arr">{{i}} - {{list}}</li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const message = ref('Hello Vue!');
+          const user = ref({
+            name: '구석현',
+            age: 27,
+            email: 'fpqk7099@gmail.com',
+          });
+          const arr = ref([1, 2, 3]);
+          return {
+            message,
+            user,
+            arr,
+          };
+        },
+      });
+
+      const vm = app.mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let obj1 = {
+        name: '7D 건조 망고',
+        type: '당절임',
+        ingredient: '망고, 설탕, 메타중아황산나트륨, 치자황색소',
+        origin: '필리핀',
+      };
+      for (let key in obj1) {
+        console.log(`${key}: ${obj1[key]}`);
+      }
+
+      const call = (obj) => {
+        for (let key in obj) {
+          console.log(`${key}: ${obj[key]}`);
+        }
+      };
+
+      call(obj1);
+    </script>
+  </head>
+  <body></body>
+</html>

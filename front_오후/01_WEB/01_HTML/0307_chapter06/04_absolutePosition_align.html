@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 
+    Position : absolute 속성
+    - 요소를 일반적인 문서 흐름이 아닌 가장 가까운 posirtion이 지정된 조상 요소를 기준으로 배치
+    - 지정된 조상요소가 없으면 최상위(body)를 기준으로 배치
+    - top, right, bottom, left 를 사용해 위치 지정
+    -->
+    <style>
+      body {
+        background-color: red;
+      }
+      #container {
+        width: 500px;
+        height: 250px;
+        background-color: orange;
+        /*위치설정*/
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -250px;
+        margin-top: -125px; /*좌상단 기준이므로 빼줘야함*/
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>요소의 중앙 배치</h1>
+    </div>
+  </body>
+</html>

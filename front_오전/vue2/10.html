@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>if</h1>
+      <h2>Data loading, error state handling</h2>
+      <div>
+        <div v-if="isLoading">Loading,,,</div>
+        <div v-else-if="error">
+          <p>{{error}}</p>
+          <button>retry</button>
+        </div>
+        <div v-else-if="list.length === 0">
+          <p>No data</p>
+        </div>
+        <ul v-else>
+          <li v-for="(item,i) in list" :key="item.id">
+            {{item.id}}-{{item.name}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const message = ref('Hello Vue!');
+          const isLoading = ref(false);
+          const error = ref('다시 시도해주세요');
+          const list = ref([
+            { id: 1, name: 'item1' },
+            { id: 2, name: 'item2' },
+            { id: 3, name: 'item3' },
+          ]);
+          const retry = () => {
+            isLoading = true;
+            error = null;
+            setTimeout(() => {
+              isLoading = false;
+              error = '오류 발생';
+              //error = {
+              //  msg: '오류',
+              //};
+            }, 2000);
+          };
+          return {
+            message,
+            isLoading,
+            error,
+            list,
+            retry,
+          };
+        },
+      });
+
+      const vm = app.mount('#app');
+    </script>
+  </body>
+</html>

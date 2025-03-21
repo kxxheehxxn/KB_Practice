@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4_class</title>
+    <script src="./4_class.js" defer></script>
+    <style>
+      .wrap {
+        width: calc(100vw - 20px);
+        height: calc(100vh - 20px);
+        overflow: hidden;
+        position: relative;
+        border: 1px solid lightgray;
+      }
+      .btn,
+      .side {
+        position: absolute;
+      }
+      .btn {
+        right: 1rem;
+        top: 1rem;
+        padding: 0.5rem;
+        background-color: tomato;
+        border: 0;
+        outline: 0;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        top: calc(1rem+2px);
+      }
+      .side {
+        right: -500px;
+        background-color: lightgray;
+        list-style: none;
+        padding: 1rem;
+        margin: 0;
+        width: 200px;
+        transition: opacity 0.3s;
+        z-index: -1;
+      }
+      .side.active {
+        right: 1rem;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>4_class</h1>
+      <button class="btn" onclick="">Hambergur</button>
+      <ul class="side">
+        <li>list1</li>
+        <li>list2</li>
+        <li>list3</li>
+        <li>list4</li>
+        <li>list5</li>
+      </ul>
+    </div>
+  </body>
+</html>

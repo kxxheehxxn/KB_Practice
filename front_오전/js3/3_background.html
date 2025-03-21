@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3_background</title>
+    <style></style>
+    <script>
+      window.onload = function () {
+        const fragment = document.createDocumentFragment();
+        console.log(fragment);
+        for (let i = 0; i < 255; i++) {
+          const div = document.createElement('div');
+          div.style.height = '2px';
+          div.style.background = `rgb(${i},${i},${i})`;
+          fragment.appendChild(div);
+        }
+        document.body.appendChild(fragment);
+      };
+    </script>
+  </head>
+  <body></body>
+</html>
