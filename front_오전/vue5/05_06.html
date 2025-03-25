@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+    <style>
+      .outer {
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        padding: 0rem;
+      }
+      .con {
+        border: 1px solid red;
+        height: 200px;
+        overflow-y: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="outer" @click="outerClick" id="top">
+        <button @click.stop="btnClick">click</button>
+      </div>
+      <hr />
+      <form @submit.prevent="submitForm">
+        <input type="text" v-model="username" />
+        <button type="submit">Submit</button>
+      </form>
+      <div class="outer" @click.capture="captureClick">
+        외부요소
+        <button @click="btnClick">Click</button>
+      </div>
+      <div class="outer" @click.self="selfClick">
+        외부요소
+        <button @click="btnClick">Click</button>
+      </div>
+      <a href="https://www.naver.com">a 요소 클릭</a>
+      <a href="#top" @click.prevent.once="moveSite">#요소 클릭</a>
+      <hr />
+      <div class="con" @scroll="handleScroll">
+        <p v-for="n in 50" :key="n">scroll test contents</p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+      const { createApp, ref } = Vue;
+
+      const app = createApp({
+        setup() {
+          const handleScroll = (e) => {
+            console.log('scroll', e.target);
+          };
+          const moveSite = () => {
+            console.log('once');
+          };
+          const selfClick = () => {
+            console.log('self click');
+          };
+          const captureClick = () => {
+            console.log('capture click');
+          };
+          const btnClick = (e) => {
+            e.stopPropagation(); // 이벤트 전파 방지
+            console.log('button click');
+          };
+          const outerClick = () => {
+            console.log('outer click');
+          };
+          const username = ref('홍길동');
+          const submitForm = () => {
+            console.log(username.value);
+          };
+          //e.stopPropagation(); -> 버블링 막기
+          //e.preventDefault(); -> 기본동작 방지
+
+          return {
+            handleScroll,
+            selfClick,
+            captureClick,
+            btnClick,
+            outerClick,
+            submitForm,
+            moveSite,
+            username,
+          };
+        },
+      });
+
+      app.mount('#app');
+    </script>
+  </body>
+</html>

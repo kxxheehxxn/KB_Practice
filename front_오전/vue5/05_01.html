@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일명</title>
+  </head>
+  <body>
+    <div id="app">
+      <label>수량:</label>
+      <input type="number" v-model="quantity" min="1" />
+
+      <label>단가:</label>
+      <input type="number" v-model="price" min="1000" />
+
+      <label>할인률:</label>
+      <input type="number" v-model="discount" min="0" max="100" />
+
+      <div>최종 가격: {{ totalPrice }}</div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp, ref, watch } = Vue;
+
+      createApp({
+        setup() {
+          //const calculateTotalPrice = computed(() => {
+          //let discountAmount = (price.value * discount.value) / 100;
+          //return (price.value - discountAmount) * quantity.value;
+          //});
+          const quantity = ref(1);
+          const price = ref(1000);
+          const discount = ref(0);
+          const totalPrice = ref(0);
+
+          const calculateTotalPrice = () => {
+            let discountAmount = (price.value * discount.value) / 100;
+            totalPrice.value = (price.value - discountAmount) * quantity.value;
+          };
+
+          watch([quantity, price, discount], calculateTotalPrice, {
+            immediate: true,
+          });
+
+          return { quantity, price, discount, totalPrice };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
