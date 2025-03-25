@@ -4,19 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-top: 2px solid rgb(128, 128, 128);
+        border-bottom: 2px solid rgb(128, 128, 128);
+      }
+
+      td,
+      th {
+        border-top: 2px solid rgb(128, 128, 128);
+        border-bottom: 2px solid rgb(128, 128, 128);
+        padding: 10px;
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
       <h3>사용자 목록</h3>
       <div>
         <span>정렬기준:</span>
-        <input type="radio" name="id" id="" />
+        <input type="radio" name="id" id="" value="id" v-model="sort" />
         <label for="id">id</label>
-        <input type="radio" name="name" id="" />
+        <input type="radio" name="name" id="" value="name" v-model="sort" />
         <label for="name">name</label>
-        <input type="radio" name="username" id="" />
+        <input
+          type="radio"
+          name="username"
+          id=""
+          value="username"
+          v-model="sort"
+        />
         <label for="username">username</label>
-        <input type="radio" name="email" id="" />
+        <input type="radio" name="email" id="" value="value" v-model="sort" />
         <label for="email">email</label>
       </div>
       <table>
@@ -30,7 +52,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(user,i) in users" ::key="user.id">
+          <tr v-for="(user,i) in sortedUsers" :key="user.id">
             <td>{{user.id}}</td>
             <td>{{user.name}}</td>
             <td>{{user.username}}</td>
@@ -280,7 +302,18 @@
         data() {
           return {
             users,
+            sort: 'id',
           };
+        },
+        computed: {
+          sortedUsers() {
+            return [...this.users].sort((a, b) => {
+              if (typeof a[this.sort] === 'string') {
+                return a[this.sort].localeCompare(b[this.sort]);
+              }
+              return a[this.sort] - b[this.sort];
+            });
+          },
         },
       }).mount('#app');
     </script>
