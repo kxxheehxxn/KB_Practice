@@ -162,3 +162,7 @@
     </script>
   </body>
 </html>
+<!-- 5-7.html 키코드 이벤트 수식어 예제 중
+특수키 수식어 (enter, esc, space, tab, delete) 사례 중 tab 부분을 아래와 같이 변경해 주세요~
+@keydown.tab.prevent="keyPressed('탭')"
+keyup 이벤트는 키를 눌렀다가 뗄 때 발생하는데, 이 시점에서는 이미 기본 tab 동작(포커스 이동)이 실행된 후입니다. 따라서 tab 키의 기본 동작을 완전히 방지하려면 keydown 이벤트를 사용해야 합니다 -->
