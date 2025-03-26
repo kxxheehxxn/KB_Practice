@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 입력 값 스타일 변경</title>
+  </head>
+  <body>
+    <div id="app">
+      <span>1부터 100까지만 입력 가능합니다.</span>
+      <br />
+      <label for="score">score:</label>
+      <input type="text" id="score" v-model="score" :style="styleScore" />
+      <span v-show="isAlert">!</span>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+      const { createApp, ref, computed } = Vue;
+
+      createApp({
+        setup() {
+          const score = ref('');
+          const isAlert = ref(false);
+
+          const styleScore = computed(() => {
+            const value = Number(score.value);
+            const isValid = value >= 1 && value <= 100;
+            isAlert.value = !isValid;
+
+            return {
+              backgroundColor: isValid ? 'white' : 'aqua',
+            };
+          });
+
+          return { score, styleScore, isAlert };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

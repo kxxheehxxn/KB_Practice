@@ -28,9 +28,9 @@
       Border <br />
       <button
         :class="{
-          'btnColor': btnColor,
-          'btnAlign': btnAlign,
-          'btnBorder': btnBorder
+          'btnColor': btnStyle.btnColor,
+          'btnAlign': btnStyle.btnAlign,
+          'btnBorder': btnStyle.btnBorder
         }"
       >
         버튼
@@ -42,11 +42,13 @@
 
       const app = createApp({
         setup() {
-          const btnColor = ref(false);
-          const btnAlign = ref(false);
-          const btnBorder = ref(false);
+          const btnStyle = reactive({
+            btnColor: false,
+            btnAlign: false,
+            btnBorder: false,
+          });
 
-          return { btnColor, btnAlign, btnBorder };
+          return { btnStyle };
         },
       });
 
