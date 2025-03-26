@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Button Style</title>
+  </head>
+  <body>
+    <div id="app">
+      <button
+        :style="{ backgroundColor, color }"
+        @mouseover="changeStyle"
+        @mouseout="resetStyle"
+      >
+        Test
+      </button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        setup() {
+          const backgroundColor = ref('aqua');
+          const color = ref('black');
+
+          const changeStyle = () => {
+            backgroundColor.value = '#ffffff';
+            color.value = '#000000';
+          };
+
+          const resetStyle = () => {
+            backgroundColor.value = 'aqua';
+            color.value = 'black';
+          };
+
+          return { backgroundColor, color, changeStyle, resetStyle };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
