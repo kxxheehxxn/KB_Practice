@@ -3,110 +3,263 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>todoList</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <title></title>
+    <style>
+      :root {
+        --m-c1: #42b983;
+        --t-c1: #333;
+        --t-c2: #888;
+        --b-c1: #ddd;
+        --b-c2: #eee;
+        --t-w: white;
+        --active-c: #7bbd9f;
+        --btn-primary: #42b983;
+        --btn-danger: #ff6b6b;
+        --gap1: 6px;
+        --gap2: 16px;
+        --gap3: 32px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        line-height: 1.6;
+        color: var(--t-c1);
+        max-width: 600px;
+        margin: 0 auto;
+      }
 
-    <link rel="stylesheet" href="./style.css" />
+      h1 {
+        text-align: center;
+        color: var(--m-c1);
+        margin: var(--gap3) 0;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        padding: var(--gap1) var(--gap2);
+        border-radius: var(--gap1);
+      }
+
+      .input-container {
+        display: flex;
+        gap: var(--gap1);
+      }
+
+      .input-container input {
+        flex: 1;
+        padding: var(--gap2);
+        border: 1px solid var(--b-c2);
+        border-radius: var(--gap1);
+      }
+      .input-container input:focus {
+        outline: none;
+        border-color: var(--m-c1);
+      }
+
+      .input-container button {
+        background: var(--btn-primary);
+        color: var(--t-w);
+      }
+
+      .filter-container {
+        display: flex;
+        justify-content: center;
+        gap: var(--gap1);
+        margin: var(--gap2) 0;
+      }
+
+      .filter-container button {
+        background: var(--b-c1);
+      }
+
+      .filter-container button.active {
+        background: var(--active-c);
+        color: var(--t-w);
+      }
+
+      .todo-list li {
+        display: flex;
+        align-items: center;
+        padding: var(--gap1) var(--gap2);
+        border-bottom: 1px dotted var(--b-c1);
+        gap: var(--gap1);
+      }
+      .todo-list li.completed {
+        background-color: var(--b-c2);
+      }
+      .todo-list li.completed span {
+        text-decoration: line-through;
+        opacity: 0.3;
+      }
+
+      .todo-list li span:first-of-type {
+        flex: 1;
+      }
+      .createAt {
+        color: var(--t-c2);
+        font-size: 0.8rem;
+        padding: 0 var(--gap1);
+      }
+      .todo-list li button {
+        color: var(--t-w);
+      }
+      .btn_done {
+        background: var(--btn-primary);
+      }
+      .btn_delete {
+        background: var(--btn-danger);
+      }
+
+      .todo-summary {
+        display: flex;
+        justify-content: space-between;
+        padding: var(--gap1) var(--gap2);
+        margin: var(--gap3) 0;
+        color: var(--t-c2);
+        border-radius: var(--gap1);
+        background-color: var(--b-c2);
+      }
+
+      .todo-summary button {
+        background: var(--btn-danger);
+        color: var(--t-w);
+      }
+    </style>
   </head>
   <body>
     <div id="app">
-      <!-- 앱제목 -->
-      <header class="hd">
-        <h1>작심</h1>
-      </header>
-      <!-- 입력폼 -->
+      <h1>작심삼일타파</h1>
       <div class="input-container">
-        <input type="text" placeholder="할일을 입력하세요" />
-        <button>추가</button>
+        <input
+          placeholder="할 일을 입력하세요"
+          v-model.trim="newTodo"
+          @keyup.enter="addTodo"
+        />
+        <button @click="addTodo">추가</button>
       </div>
-      <!-- 필터 탭 -->
+
       <div class="filter-container">
-        <button class="active">전체</button>
-        <button>미완료</button>
-        <button>완료</button>
+        <button @click="filter='all'" :class="{active : filter === 'all'}">
+          전체
+        </button>
+        <button
+          @click="filter='active'"
+          :class="{active : filter === 'active'}"
+        >
+          미완료
+        </button>
+        <button
+          @click="filter='completed'"
+          :class="{active : filter === 'completed'}"
+        >
+          완료
+        </button>
       </div>
-      <!-- 할일 목록 -->
+
       <ul class="todo-list">
-        <li class="completed">
-          <input type="checkbox" />
-          <span>입력된 리스트1</span>
-          <time>2025-03-26</time>
-          <i class="fa fa-trash"></i>
-        </li>
-        <li>
-          <input type="checkbox" />
-          <span>입력된 리스트2</span>
-          <time>2025-03-26</time>
-          <i class="fa fa-trash"></i>
-        </li>
-        <li class="completed">
-          <input type="checkbox" />
-          <span>입력된 리스트3</span>
-          <time>2025-03-26</time>
-          <i class="fa fa-trash"></i>
-        </li>
-        <li>
-          <input type="checkbox" />
-          <span>입력된 리스트2</span>
-          <time>2025-03-26</time>
-          <i class="fa fa-trash"></i>
+        <li v-if="filteredTodos.length ===0">새로운 할 일을 추가해 주세요</li>
+        <li
+          v-else
+          v-for="todo in filteredTodos"
+          :key="todo.id"
+          :class="{ completed: todo.completed }"
+          @click="todo.completed = !todo.completed"
+        >
+          <input type="checkbox" v-model="todo.completed" @change="saveTodos" />
+          <span>{{todo.text}}</span>
+          <span class="createAt">{{todo.createAt}}</span>
+          <!-- @click.stop 추가하여 이벤트 버블링 방지 -->
+          <button class="btn_delete" @click.stop="removeTodo(todo.id)">
+            삭제
+          </button>
         </li>
       </ul>
-      <!-- 요약정보 -->
-      <div class="todo-summary">
-        <p><span>미완료항목</span><span>0</span></p>
-        <p><span>완료항목</span><span>0</span></p>
-        <button>완료된 항목 삭제</button>
+
+      <div class="todo-summary" v-if="todos.length > 0">
+        <span
+          >{{activeTodosCount}}개 남음 / {{completedTodosCount}}개 완료</span
+        >
+        <button v-if="completedTodosCount > 0" @click="clearCompleted">
+          완료된 항목 전체 삭제
+        </button>
       </div>
     </div>
+
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript">
       const { createApp } = Vue;
-
       let vm = createApp({
         name: 'App',
         data() {
           return {
-            todos: [
-              {
-                id: 1,
-                text: '할 일 1',
-                completed: false,
-                createAt: '2025-03-24',
-              },
-              {
-                id: 2,
-                text: '할 일 2',
-                completed: true,
-                createAt: '2025-03-25',
-              },
-              {
-                id: 3,
-                text: '할 일 3',
-                completed: false,
-                createAt: '2025-03-26',
-              },
-              {
-                id: 4,
-                text: '할 일 4',
-                completed: false,
-                createAt: '2025-03-26',
-              },
-            ],
+            todos: [],
+            newTodo: '',
+            filter: 'all',
           };
+        },
+        methods: {
+          addTodo() {
+            const text = this.newTodo;
+            if (!text) return;
+
+            this.todos.push({
+              id: Date.now(),
+              text: text,
+              completed: false,
+              createAt: new Date().toISOString().slice(0, 10),
+            });
+
+            console.log(this.todos);
+
+            this.newTodo = '';
+            this.saveTodos();
+          },
+
+          saveTodos() {
+            localStorage.setItem('todos', JSON.stringify(this.todos));
+          },
+
+          loadTodos() {
+            const todos = localStorage.getItem('todos');
+            if (!todos) return;
+            this.todos = JSON.parse(todos);
+          },
+
+          removeTodo(id) {
+            this.todos = this.todos.filter((todo) => todo.id !== id);
+            this.saveTodos();
+          },
+
+          // 완료된 할일 모두 삭제
+          clearCompleted() {
+            this.todos = this.todos.filter((todo) => !todo.completed);
+            this.saveTodos();
+          },
+        },
+
+        computed: {
+          filteredTodos() {
+            if (this.filter === 'all') return this.todos;
+            if (this.filter === 'active')
+              return this.todos.filter((todo) => !todo.completed);
+            if (this.filter === 'completed')
+              return this.todos.filter((todo) => todo.completed);
+          },
+
+          activeTodosCount() {
+            return this.todos.filter((todo) => !todo.completed).length;
+          },
+
+          completedTodosCount() {
+            return this.todos.filter((todo) => todo.completed).length;
+          },
+        },
+
+        mounted() {
+          this.loadTodos();
         },
       });
       vm.mount('#app');
