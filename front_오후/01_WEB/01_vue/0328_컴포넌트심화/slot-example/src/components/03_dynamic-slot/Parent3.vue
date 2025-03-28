@@ -17,10 +17,10 @@ const changeHeader = () => {
 
 <template>
   <!-- 
-     named slot
-     - 부모가 자식 컴포넌트의 여러 위치에 콘텐츠 삽입 가능
-     - slot에 name을 붙이면 특정 위치에 원하는 내용 전달 가능 
-      -->
+  dynamic-slot
+  - 부모가 자식 컴포넌트의 슬롯에 동적으로 콘텐츠 할당 가능 
+  (슬롯 이름을 동적으로 변경 가능)
+  -->
   <div style="border: 2px solid blue; padding: 10px">
     <Child :slot-name="slotName">
       <template #header>
