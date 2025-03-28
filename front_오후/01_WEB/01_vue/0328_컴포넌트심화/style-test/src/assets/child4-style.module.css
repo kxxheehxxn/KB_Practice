@@ -1,0 +1,7 @@
+/* module.css는 약속된 파일 확장자명 */
+.child {
+  background-color: aliceblue;
+  border: 1px solid black;
+  padding: 1em;
+  margin: 1.5em;
+}
