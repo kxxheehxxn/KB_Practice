@@ -1,0 +1,24 @@
+.flex-container {
+  width: 300px;
+  height: 200px;
+  background-color: #c4c4c4;
+  border: 1px solid black;
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* flex-direction: row; */
+  /* flex-wrap : wrap-reverse */
+  /* flex-flow : row wrap-reverse */
+  /* 주축방향으로 정렬 */
+  /* justify-content: space-evenly; */
+  /* 교차축 방향으로 정렬 */
+  /* align-items: center; */
+  /* align-content: space-evenly; */
+}
+.flex-item {
+  width: 50px;
+  color: white;
+  background-color: #ff5252;
+}
+.flex-item:nth-child(2n) {
+  background-color: #bf5e5e;
+}
