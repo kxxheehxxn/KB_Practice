@@ -1,5 +1,5 @@
 <script setup>
-defineProps(['song', 'icons']);
+defineProps(['song', 'icons'])
 </script>
 
 <template>

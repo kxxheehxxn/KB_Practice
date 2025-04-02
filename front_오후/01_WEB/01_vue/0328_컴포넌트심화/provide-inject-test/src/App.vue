@@ -1,22 +1,22 @@
 <script setup>
-import { ref, computed } from 'vue';
-import SongList from './components/SongList.vue';
+import { ref, computed } from 'vue'
+import SongList from './components/SongList.vue'
 
 const songs = ref([
   { id: 1, title: 'Blueming', done: true },
   { id: 2, title: 'Dynamite', done: true },
   { id: 3, title: 'Lovesick Girls', done: false },
   { id: 4, title: '마리아(Maria)', done: false },
-]);
+])
 
 const icons = ref({
   checked: 'far fa-check-circle',
   unchecked: 'far fa-circle',
-});
+})
 
 const doneCount = computed(() => {
-  doneLength.value = songs.value.filter((s) => s.done === true).length;
-});
+  return songs.value.filter((s) => s.done).length
+})
 </script>
 
 <template>
